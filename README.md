@@ -1,2 +1,2 @@
-# K-NN-Algorithm-
-Implementação do primeiro trabalho de PPIOO
+# K-NN-Algorithm - Python
+Implementação do primeiro trabalho de PPIOO em python
