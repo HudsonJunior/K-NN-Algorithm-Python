@@ -1,5 +1,5 @@
 import Exemplo
-
+import Helpers
 def Classificar(B, X, k):
     exemplosList = []
 
@@ -9,7 +9,7 @@ def Classificar(B, X, k):
         lastIndex = len(sampleTrain)
 
         classeTrain = sampleTrain[lastIndex - 1]
-        P = sampleTrain.pop(lastIndex)   
+        P =  Helpers.stringListToDouble(sampleTrain.pop(lastIndex)) 
 
         distancia = calculaDistancia(P, X)
 
@@ -20,6 +20,7 @@ def Classificar(B, X, k):
     ordeneredList = sorted(exemplosList, key= lambda exemplo: exemplo.distancia)
 
     kList = ordeneredList[:k]
+    
 
     return classeMaisFrequente(kList)
 
@@ -28,9 +29,9 @@ def calculaDistancia(P, Q):
     soma = 0
 
     for i in range(0 , len(P) - 1):
-        modulo = + (P[i] - Q[i])
+        absValue = + (P[i] - Q[i])
 
-        soma += modulo
+        soma += absValue
     
     return soma
 
@@ -52,8 +53,8 @@ def classeMaisFrequente(List):
     classesMaisFrequentes = []
     
     for j in classes:
-        if (classes.count(j) == counter) and (classes[j] not in classesMaisFrequentes):
-            classesMaisFrequentes.append(classes[j])
+        if (classes.count(j) == counter) and (j not in classesMaisFrequentes):
+            classesMaisFrequentes.append(j)
 
     if(len(classesMaisFrequentes) == 1):
         return classeFrequente

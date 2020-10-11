@@ -1,16 +1,5 @@
 import knn
-
-def tiposValidos(tipoTest, tipoTrain):
-    if tipoTest != 'test' or tipoTrain != 'train':
-        return False
-    
-    return True
-
-def tamanhosValidos(sizeTest, sizeTrain):
-    if sizeTest != sizeTrain:
-        return False
-
-    return True
+import Helpers
 
 def main():
     print("Digite: nome do arquivo train + nome do arquivo test + k")
@@ -22,7 +11,7 @@ def main():
 
     typeFileTrain, sizeFileTrain = fileNameTrain.split('_')
 
-    if tiposValidos(typeFileTest, typeFileTrain) and tamanhosValidos(sizeFileTest, sizeFileTrain):
+    if Helpers.tiposValidos(typeFileTest, typeFileTrain) and Helpers.tamanhosValidos(sizeFileTest, sizeFileTrain):
         Base = open(fileNameTrain, 'r')
 
         Test = open(fileNameTest, 'r')
@@ -34,7 +23,7 @@ def main():
             lastIndex = len(sampleTest)
 
             classeTest = sampleTest[lastIndex - 1]
-            X = sampleTest.pop(lastIndex)  
+            X = Helpers.stringListToDouble(sampleTest.pop(lastIndex))
 
             result = knn.Classificar(Base, X, k)
 
