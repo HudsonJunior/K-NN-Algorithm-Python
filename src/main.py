@@ -17,6 +17,7 @@ def main():
 
             Test = open(fileNameTest, 'r')
             
+            listBase = Base.readlines()
             i = 1
 
             count = 0
@@ -29,7 +30,7 @@ def main():
                 classeTest = sampleTest.pop(lastIndex)
 
                 X = Helpers.stringListToDouble(sampleTest)
-                result = knn.Classificar(Base, X, int(k))
+                result = knn.Classificar(listBase, X, int(k))
 
                 print("Análise exemplo de teste", i)
                 print("Classe preditada:", result, "\nClasse do exemplo:", classeTest)
@@ -43,8 +44,6 @@ def main():
 
 
                 i = i + 1
-
-                Base.seek(0)
 
             print("sucesso:", count)
             Base.close()
