@@ -26,18 +26,18 @@ def main():
                 classeTest = sampleTest.pop(lastIndex)
 
                 X = Helpers.stringListToDouble(sampleTest)
-
-                result = knn.Classificar(Base, X, k)
+                print(X)
+                result = knn.Classificar(Base, X, int(k))
 
                 print("Análise exemplo de teste", i)
                 print("Classe preditada:", result, "\nClasse do exemplo:", classeTest)
 
                 if result == classeTest:
-                    print("Sucesso na predição!")
+                    print("Sucesso na predição!\n")
                 else:
-                    print("Falha na predição!")
+                    print("Falha na predição!\n")
 
-                if i == 1:
+                if i == 10:
                     break
 
                 i = i + 1

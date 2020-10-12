@@ -3,11 +3,11 @@ import Helpers
 
 def Classificar(B, X, k):
     exemplosList = []
-
+    print('X: ', X)
     try:
         for E in B:
             sampleTrain = E.split(',')
-
+            print('sampletrain: ', sampleTrain)
             lastIndex = len(sampleTrain) - 1
 
             classeTrain = sampleTrain.pop(lastIndex)
@@ -15,13 +15,14 @@ def Classificar(B, X, k):
             P =  Helpers.stringListToDouble(sampleTrain) 
 
             distancia = Helpers.calculaDistancia(P, X)
- 
-            exemplosList.append(ExemploClass(classeTrain, distancia))
 
-        ordeneredList = sorted(exemplosList, key=lambda ExemploClaass:ExemploClass.getDistancia)
-        
+            exemplosList.append(ExemploClass(classeTrain, distancia))
+    
+        ordeneredList = sorted(exemplosList, key=lambda exemplo:exemplo.distancia)
+    
         kList = ordeneredList[:k]
-        
+       
+
         return _classeMaisFrequente(kList)
     
     except Exception as e:
@@ -29,12 +30,12 @@ def Classificar(B, X, k):
 
 def _classeMaisFrequente(List): 
     classes = []
-
+    
     try:
         
         for i in List:
-            classes.append(i.getClasse())
-
+            classes.append(i.classe)
+        print('1: ', classes)
         counter = 0
         classeFrequente = classes[0]
 
@@ -44,13 +45,13 @@ def _classeMaisFrequente(List):
             if(curr_frequency > counter): 
                 counter = curr_frequency 
                 classeFrequente = i 
-            
+        print('2: ', classeFrequente)   
         classesMaisFrequentes = []
         
         for j in classes:
             if (classes.count(j) == counter) and (j not in classesMaisFrequentes):
                 classesMaisFrequentes.append(j)
-
+        print('3: ', classesMaisFrequentes)
         if(len(classesMaisFrequentes) == 1):
             return classeFrequente
 
