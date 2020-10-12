@@ -18,7 +18,10 @@ def main():
             Test = open(fileNameTest, 'r')
             
             i = 1
+
+            count = 0
             for x in Test:
+
                 sampleTest = x.split(',')
 
                 lastIndex = len(sampleTest) - 1
@@ -26,24 +29,26 @@ def main():
                 classeTest = sampleTest.pop(lastIndex)
 
                 X = Helpers.stringListToDouble(sampleTest)
-                print(X)
                 result = knn.Classificar(Base, X, int(k))
 
                 print("Análise exemplo de teste", i)
                 print("Classe preditada:", result, "\nClasse do exemplo:", classeTest)
 
+            
                 if result == classeTest:
+                    count = count+1
                     print("Sucesso na predição!\n")
                 else:
                     print("Falha na predição!\n")
 
-                if i == 10:
-                    break
 
                 i = i + 1
 
-            Base.close()
+                Base.seek(0)
 
+            print("sucesso:", count)
+            Base.close()
+            
             Test.close()
 
         else:
