@@ -1,4 +1,4 @@
-import Exemplo
+from Exemplo import ExemploClass
 import Helpers
 
 def Classificar(B, X, k):
@@ -8,19 +8,18 @@ def Classificar(B, X, k):
         for E in B:
             sampleTrain = E.split(',')
 
-            lastIndex = len(sampleTrain)
+            lastIndex = len(sampleTrain) - 1
 
-            classeTrain = sampleTrain[lastIndex - 1]
-            P =  Helpers.stringListToDouble(sampleTrain.pop(lastIndex)) 
+            classeTrain = sampleTrain.pop(lastIndex)
+
+            P =  Helpers.stringListToDouble(sampleTrain) 
 
             distancia = Helpers.calculaDistancia(P, X)
+ 
+            exemplosList.append(ExemploClass(classeTrain, distancia))
 
-            exemplo = Exemplo.ExemploClass(classeTrain, distancia)
-
-            exemplosList.append(exemplo)
+        ordeneredList = sorted(exemplosList, key=lambda ExemploClaass:ExemploClass.getDistancia)
         
-        ordeneredList = sorted(exemplosList, key= lambda exemplo: exemplo.getDistancia())
-
         kList = ordeneredList[:k]
         
         return _classeMaisFrequente(kList)

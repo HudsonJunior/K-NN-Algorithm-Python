@@ -3,7 +3,8 @@ def stringListToDouble(List):
         listDouble = []
 
         for i in List:
-            listDouble.append(float(i))
+            newFloat = float(i)
+            listDouble.append(newFloat)
         
         return listDouble
 
@@ -27,11 +28,11 @@ def calculaDistancia(P, Q):
         soma = 0
 
         for i in range(0 , len(P) - 1):
-            absValue = + (P[i] - Q[i])
+            absValue = abs(P[i] - Q[i])
 
             soma += absValue
         
-        return soma
+        return float(soma)
     
     except Exception as e:
         print("Ocorreu um erro ao calcular a distancia entre os pontos.\n", e)

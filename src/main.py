@@ -21,10 +21,11 @@ def main():
             for x in Test:
                 sampleTest = x.split(',')
 
-                lastIndex = len(sampleTest)
+                lastIndex = len(sampleTest) - 1
 
-                classeTest = sampleTest[lastIndex - 1]
-                X = Helpers.stringListToDouble(sampleTest.pop(lastIndex))
+                classeTest = sampleTest.pop(lastIndex)
+
+                X = Helpers.stringListToDouble(sampleTest)
 
                 result = knn.Classificar(Base, X, k)
 
@@ -36,7 +37,14 @@ def main():
                 else:
                     print("Falha na predição!")
 
+                if i == 1:
+                    break
+
                 i = i + 1
+
+            Base.close()
+
+            Test.close()
 
         else:
             print("Arquivos incompatíveis!")
