@@ -1,7 +1,9 @@
 import knn
 import Helpers
+import time
 
 def main():
+
     print("Digite: nome do arquivo train + nome do arquivo test + k")
 
     try:
@@ -58,4 +60,8 @@ def main():
 
 
 if __name__ == "__main__":
+    print('kkkkkkkkk')
+    start_time = time.time()
     main()
+
+    print('tempo de execução final:', time.time() - start_time)
