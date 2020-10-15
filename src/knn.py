@@ -7,9 +7,8 @@ def Classificar(B, X, k):
     try:
         for E in B:
             sampleTrain = E.split(',')
-            lastIndex = len(sampleTrain) - 1
 
-            classeTrain = sampleTrain.pop(lastIndex)
+            classeTrain = sampleTrain.pop()
 
             P =  Helpers.stringListToDouble(sampleTrain) 
 
