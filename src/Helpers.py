@@ -36,3 +36,4 @@ def calculaDistancia(P, Q):
     
     except Exception as e:
         print("Ocorreu um erro ao calcular a distancia entre os pontos.\n", e)
+

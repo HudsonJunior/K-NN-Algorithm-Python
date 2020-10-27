@@ -14,16 +14,24 @@ def main():
 
         typeFileTrain, sizeFileTrain = fileNameTrain.split('_')
 
+        TestList = []
+
         if Helpers.tiposValidos(typeFileTest, typeFileTrain) and Helpers.tamanhosValidos(sizeFileTest, sizeFileTrain):
             Base = open(fileNameTrain, 'r')
 
             Test = open(fileNameTest, 'r')
             
+            TestList = Test.readlines()
+        
             listBase = Base.readlines()
-            i = 1
+           
+            Base.close()
+            
+            Test.close()
 
+            i = 1
             count = 0
-            for x in Test:
+            for x in TestList:
 
                 sampleTest = x.split(',')
 
@@ -48,10 +56,7 @@ def main():
                 i = i + 1
 
             print("sucesso:", count)
-            Base.close()
-            
-            Test.close()
-
+           
         else:
             print("Arquivos incompatíveis!")
 
