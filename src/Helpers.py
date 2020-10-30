@@ -1,3 +1,23 @@
+def fileToList(fileName):
+    try:
+        f = open(fileName, 'r')
+        resultado = f.readlines()
+        f.close()
+        listListDouble = []
+        classedList = []
+
+        for x in resultado:
+            sampleSplited = x.split(',')
+            classe = sampleSplited.pop()
+            P = stringListToDouble(sampleSplited)
+            listListDouble.append(P)
+            classedList.append(classe)
+
+        return listListDouble, classedList
+
+    except Exception as e:
+        print("Ocorreu um erro ao ler o arquivo.\n", e)
+
 def stringListToDouble(List):
     try:
         listDouble = []

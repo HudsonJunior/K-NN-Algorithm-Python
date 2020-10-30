@@ -1,20 +1,20 @@
 from Exemplo import ExemploClass
 import Helpers
 
-def Classificar(B, X, k):
+def Classificar(B, X, k, listCLassesBase):
     exemplosList = []
+    i = 0
 
     try:
         for E in B:
-            sampleTrain = E.split(',')
 
-            classeTrain = sampleTrain.pop()
+            distancia = Helpers.calculaDistancia(E, X)
 
-            P =  Helpers.stringListToDouble(sampleTrain) 
-
-            distancia = Helpers.calculaDistancia(P, X)
+            classeTrain = listCLassesBase[i]
 
             exemplosList.append(ExemploClass(classeTrain, distancia))
+            
+            i = i + 1
     
         ordeneredList = sorted(exemplosList, key=lambda exemplo:exemplo.distancia)
     

@@ -14,39 +14,24 @@ def main():
 
         typeFileTrain, sizeFileTrain = fileNameTrain.split('_')
 
-        TestList = []
-
         if Helpers.tiposValidos(typeFileTest, typeFileTrain) and Helpers.tamanhosValidos(sizeFileTest, sizeFileTrain):
-            Base = open(fileNameTrain, 'r')
 
-            Test = open(fileNameTest, 'r')
-            
-            TestList = Test.readlines()
-        
-            listBase = Base.readlines()
-           
-            Base.close()
-            
-            Test.close()
+            listDoubleBase, listClassesBase = Helpers.fileToList(fileNameTrain)
 
-            i = 1
+            listDoubleTest, listClassesTest = Helpers.fileToList(fileNameTest)
+
+            i = 0
             count = 0
-            for x in TestList:
+            
+            for x in listDoubleTest:
 
-                sampleTest = x.split(',')
-
-                lastIndex = len(sampleTest) - 1
-
-                classeTest = sampleTest.pop(lastIndex)
-
-                X = Helpers.stringListToDouble(sampleTest)
-                result = knn.Classificar(listBase, X, int(k))
+                result = knn.Classificar(listDoubleBase, x, int(k), listClassesBase)
 
                 print("Análise exemplo de teste", i)
-                print("Classe preditada:", result, "\nClasse do exemplo:", classeTest)
+                print("Classe preditada:", result, "\nClasse do exemplo:", listClassesTest[i])
 
             
-                if result == classeTest:
+                if result == listClassesTest[i]:
                     count = count+1
                     print("Sucesso na predição!\n")
                 else:
@@ -65,7 +50,6 @@ def main():
 
 
 if __name__ == "__main__":
-    print('kkkkkkkkk')
     start_time = time.time()
     main()
 
