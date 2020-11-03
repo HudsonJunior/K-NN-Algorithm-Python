@@ -26,21 +26,13 @@ def main():
             for x in listDoubleTest:
 
                 result = knn.Classificar(listDoubleBase, x, int(k), listClassesBase)
-
-                print("Análise exemplo de teste", i)
-                print("Classe preditada:", result, "\nClasse do exemplo:", listClassesTest[i])
-
-            
+                
                 if result == listClassesTest[i]:
                     count = count+1
-                    print("Sucesso na predição!\n")
-                else:
-                    print("Falha na predição!\n")
-
 
                 i = i + 1
-
-            print("sucesso:", count)
+            
+            print("Quantidade de acertos na predição: ", count)
            
         else:
             print("Arquivos incompatíveis!")
@@ -50,7 +42,4 @@ def main():
 
 
 if __name__ == "__main__":
-    start_time = time.time()
     main()
-
-    print('tempo de execução final:', time.time() - start_time)

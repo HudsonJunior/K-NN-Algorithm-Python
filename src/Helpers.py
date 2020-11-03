@@ -3,13 +3,16 @@ def fileToList(fileName):
         f = open(fileName, 'r')
         resultado = f.readlines()
         f.close()
+        
         listListDouble = []
         classedList = []
 
         for x in resultado:
             sampleSplited = x.split(',')
             classe = sampleSplited.pop()
+
             P = stringListToDouble(sampleSplited)
+
             listListDouble.append(P)
             classedList.append(classe)
 

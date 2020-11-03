@@ -2,6 +2,7 @@ from Exemplo import ExemploClass
 import Helpers
 
 def Classificar(B, X, k, listCLassesBase):
+
     exemplosList = []
     i = 0
 
@@ -33,20 +34,24 @@ def _classeMaisFrequente(List):
         
         for i in List:
             classes.append(i.classe)
+            
         counter = 0
         classeFrequente = classes[0]
 
         
         for i in classes: 
             curr_frequency = classes.count(i) 
+
             if(curr_frequency > counter): 
                 counter = curr_frequency 
                 classeFrequente = i 
+
         classesMaisFrequentes = []
         
         for j in classes:
             if (classes.count(j) == counter) and (j not in classesMaisFrequentes):
                 classesMaisFrequentes.append(j)
+
         if(len(classesMaisFrequentes) == 1):
             return classeFrequente
 
